@@ -1,5 +1,4 @@
 import users from "./users.js";
-console.log(users);
 // ________________ TASK - 01 _____________________________
 /* Получить массив имен всех пользователей (поле name).*/
 const getUserNames = (users) => {
@@ -91,24 +90,14 @@ console.log(getNamesSortedByFriendsCount(users));
  при этом не должно быть повторяющихся умений
  и они должны быть отсортированы в алфавитном порядке. */
 const getSortedUniqueSkills = (users) => {
-  //
+  return users
+    .reduce((array, user) => {
+      array.push(...user.skills);
+      return array;
+    }, [])
+    .filter((elem, index, array) => index === array.indexOf(elem))
+    .sort();
 };
 
 console.log(getSortedUniqueSkills(users));
 // [ 'adipisicing', 'amet', 'anim', 'commodo', 'culpa', 'elit', 'ex', 'ipsum', 'irure', 'laborum', 'lorem', 'mollit', 'non', 'nostrud', 'nulla', 'proident', 'tempor', 'velit', 'veniam' ]
-
-/* 
-const getSkills = (users) =>
-//   users.reduce((allSkills, user) => {
-//     allSkills.push(...user.skills);
-
-//     return allSkills;
-//   }, []);
-
-// const unicSkills = function (getSkills) {
-//   let result = getSkills.filter((elem, i) => getSkills.indexOf(elem) == i);
-//   return result;
-// };
-// console.log(unicSkills(getSkills(users)));
-
-*/
